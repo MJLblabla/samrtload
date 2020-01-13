@@ -42,6 +42,29 @@ public class SmartRecyclerView extends FrameLayout {
     private SmartRefreshLayout smartRefreshLayout;
     private  FrameLayout flRecyContent;
 
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
+    public void setRecyclerView(RecyclerView recyclerView) {
+        this.recyclerView = recyclerView;
+    }
+
+    public SmartRefreshLayout getSmartRefreshLayout() {
+        return smartRefreshLayout;
+    }
+
+    public void setSmartRefreshLayout(SmartRefreshLayout smartRefreshLayout) {
+        this.smartRefreshLayout = smartRefreshLayout;
+    }
+
+    public FrameLayout getFlRecyContent() {
+        return flRecyContent;
+    }
+
+    public void setFlRecyContent(FrameLayout flRecyContent) {
+        this.flRecyContent = flRecyContent;
+    }
 
     private void init(){
        View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_refresh_recyclerview,this,false);
