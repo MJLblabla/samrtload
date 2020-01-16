@@ -42,29 +42,16 @@ public class SmartRecyclerView extends FrameLayout {
     private SmartRefreshLayout smartRefreshLayout;
     private  FrameLayout flRecyContent;
 
-    public RecyclerView getRecyclerView() {
-        return recyclerView;
-    }
-
-    public void setRecyclerView(RecyclerView recyclerView) {
-        this.recyclerView = recyclerView;
-    }
-
     public SmartRefreshLayout getSmartRefreshLayout() {
         return smartRefreshLayout;
     }
 
-    public void setSmartRefreshLayout(SmartRefreshLayout smartRefreshLayout) {
-        this.smartRefreshLayout = smartRefreshLayout;
-    }
+
 
     public FrameLayout getFlRecyContent() {
         return flRecyContent;
     }
 
-    public void setFlRecyContent(FrameLayout flRecyContent) {
-        this.flRecyContent = flRecyContent;
-    }
 
     private void init(){
        View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_refresh_recyclerview,this,false);
@@ -75,19 +62,41 @@ public class SmartRecyclerView extends FrameLayout {
         addView(view);
     }
 
+
+    /**
+     * 获取　recyclerView
+     * @return
+     */
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
+
+
+    /**
+     * 设置刷新头样式
+     * @param refreshHeader
+     */
     public void setReFreshHearfer(RefreshHeader refreshHeader){
         smartRefreshLayout.setRefreshHeader(refreshHeader);
     }
 
+    /**
+     * 手动调用触发刷新
+     */
     public void startRefresh(){
         smartRefreshHelper.refresh();
     }
 
-
+    /**
+     * 告诉view获取失败
+     */
     public void onFetchDataError(){
         smartRefreshHelper.refresh();
     }
-    //
+    /**
+     * 请求成功　smartRefreshHelper处理页数记录空视图的显示
+     */
     public void onFetchDataFinish(List data,  Boolean  goneIfNoData){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData);
     }
@@ -96,9 +105,9 @@ public class SmartRecyclerView extends FrameLayout {
      * 初始化
      *
      * @param emptyView 空视图
-     *
+     * @param adapter  适配器
      *@param preLoadNumber 静默加载滑到倒数第几个开始
-     * @param fetcherFuc 刷新页回调　0开始
+     * @param fetcherFuc 刷新事件页回调　0开始
      */
     public void setUp (BaseQuickAdapter adapter, IEmptyView emptyView
             , int preLoadNumber,Boolean loadmoreNeed, Boolean refreshNeed
