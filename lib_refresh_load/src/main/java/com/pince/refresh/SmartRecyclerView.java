@@ -115,7 +115,7 @@ public class SmartRecyclerView extends FrameLayout {
            , Function1<Integer,Unit>  fetcherFuc
     ){
         if(emptyView!=null){
-            flRecyContent.addView(emptyView.getContentView());
+            flRecyContent.addView(emptyView.getContentView(),0);
         }
 
         recyclerView.setAdapter(adapter);
