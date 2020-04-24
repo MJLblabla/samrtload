@@ -46,7 +46,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
             simpleLoadMoreView.setLoadMoreEndGone(true)
             adapter.setOnLoadMoreListener({ loadMore() }, recycler_view)
         }
-        refresh_layout.setEnableLoadMore(refreshNeed)
+        refresh_layout.setEnableLoadMore(false)
         if(refreshNeed){
             refresh_layout.setOnRefreshListener {
                 refresh()
