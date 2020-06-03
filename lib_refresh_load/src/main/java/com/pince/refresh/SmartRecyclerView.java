@@ -43,7 +43,8 @@ public class SmartRecyclerView extends FrameLayout {
     private  FrameLayout flRecyContent;
 
 
-    private int defaultPageSize = 0;
+
+    public int defaultPageSize = 0;
 
     public SmartRefreshLayout getSmartRefreshLayout() {
         return smartRefreshLayout;
