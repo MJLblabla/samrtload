@@ -44,7 +44,6 @@ public class SmartRecyclerView extends FrameLayout {
 
 
 
-    public int defaultPageSize = 0;
 
     public SmartRefreshLayout getSmartRefreshLayout() {
         return smartRefreshLayout;
@@ -100,10 +99,22 @@ public class SmartRecyclerView extends FrameLayout {
     }
     /**
      * 请求成功　smartRefreshHelper处理页数记录空视图的显示
+     *
+     * @param goneIfNoData  已经到底了一直显示
      */
     public void onFetchDataFinish(List data,  Boolean  goneIfNoData){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData);
     }
+
+    /**
+     * 请求成功　smartRefreshHelper处理页数记录空视图的显示
+     *
+     * @param sureLoadMoreEnd  很明确没有下一页了　不需要请求下一页来确认
+     */
+    public void onFetchDataFinish(List data,  Boolean  goneIfNoData,boolean sureLoadMoreEnd){
+        smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData,sureLoadMoreEnd);
+    }
+
 
 
 
@@ -126,7 +137,7 @@ public class SmartRecyclerView extends FrameLayout {
 
         recyclerView.setAdapter(adapter);
         smartRefreshHelper = new SmartRefreshHelper(adapter,recyclerView,smartRefreshLayout,emptyView,preLoadNumber,loadmoreNeed,refreshNeed,fetcherFuc);
-        smartRefreshHelper.setDefaultPageSize(defaultPageSize);
+
     }
 
 

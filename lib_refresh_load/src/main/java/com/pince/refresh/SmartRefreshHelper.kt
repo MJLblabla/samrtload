@@ -34,8 +34,6 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
     private var isRefreshing: Boolean = false
     private var currentPage = 0
 
-    var defaultPageSize =0
-
     private var eachPageSize: Int = 0
 
 
@@ -65,7 +63,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
     }
 
 
-    fun onFetchDataFinish(data: List<T>?, goneIfNoData: Boolean) {
+    fun onFetchDataFinish(data: List<T>?, goneIfNoData: Boolean,sureLoadMoreEnd: Boolean) {
 
         refresh_layout.finishRefresh(true)
         if (data != null) {
@@ -82,10 +80,8 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
 
             }
 
-            if(isRefreshing){
-                if (data.size < defaultPageSize && defaultPageSize>0) {
-                    adapter.loadMoreEnd(goneIfNoData)
-                }
+            if(sureLoadMoreEnd){
+                adapter.loadMoreEnd(goneIfNoData)
             }else{
                 if (data.size < eachPageSize) {
                     adapter.loadMoreEnd(goneIfNoData)
@@ -98,6 +94,11 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
         refreshEmptyView(NODATA)
         isLoadMoreing = false
         isRefreshing = false
+    }
+
+    fun onFetchDataFinish(data: List<T>?, goneIfNoData: Boolean) {
+        onFetchDataFinish(data,goneIfNoData,false)
+
     }
 
 
