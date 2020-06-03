@@ -34,6 +34,8 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
     private var isRefreshing: Boolean = false
     private var currentPage = 0
 
+    var defaultPageSize =0
+
     private var eachPageSize: Int = 0
 
 
@@ -80,11 +82,18 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
 
             }
 
-            if (data.size < eachPageSize) {
-                adapter.loadMoreEnd(goneIfNoData)
-            } else {
-                adapter.loadMoreComplete()
+            if(isRefreshing){
+                if (data.size < defaultPageSize && defaultPageSize>0) {
+                    adapter.loadMoreEnd(goneIfNoData)
+                }
+            }else{
+                if (data.size < eachPageSize) {
+                    adapter.loadMoreEnd(goneIfNoData)
+                } else {
+                    adapter.loadMoreComplete()
+                }
             }
+
         }
         refreshEmptyView(NODATA)
         isLoadMoreing = false

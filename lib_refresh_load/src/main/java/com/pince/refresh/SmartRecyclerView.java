@@ -42,6 +42,9 @@ public class SmartRecyclerView extends FrameLayout {
     private SmartRefreshLayout smartRefreshLayout;
     private  FrameLayout flRecyContent;
 
+
+    private int defaultPageSize = 0;
+
     public SmartRefreshLayout getSmartRefreshLayout() {
         return smartRefreshLayout;
     }
@@ -101,6 +104,8 @@ public class SmartRecyclerView extends FrameLayout {
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData);
     }
 
+
+
     /**
      * 初始化
      *
@@ -120,6 +125,7 @@ public class SmartRecyclerView extends FrameLayout {
 
         recyclerView.setAdapter(adapter);
         smartRefreshHelper = new SmartRefreshHelper(adapter,recyclerView,smartRefreshLayout,emptyView,preLoadNumber,loadmoreNeed,refreshNeed,fetcherFuc);
+        smartRefreshHelper.setDefaultPageSize(defaultPageSize);
     }
 
 
