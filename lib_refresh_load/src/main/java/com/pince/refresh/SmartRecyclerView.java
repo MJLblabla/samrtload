@@ -95,7 +95,7 @@ public class SmartRecyclerView extends FrameLayout {
      * 告诉view获取失败
      */
     public void onFetchDataError(){
-        smartRefreshHelper.refresh();
+        smartRefreshHelper.onFetchDataError();
     }
     /**
      * 请求成功　smartRefreshHelper处理页数记录空视图的显示
@@ -108,14 +108,10 @@ public class SmartRecyclerView extends FrameLayout {
 
     /**
      * 请求成功　smartRefreshHelper处理页数记录空视图的显示
-     *
-     * @param sureLoadMoreEnd  很明确没有下一页了　不需要请求下一页来确认
      */
     public void onFetchDataFinish(List data,  Boolean  goneIfNoData,boolean sureLoadMoreEnd){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData,sureLoadMoreEnd);
     }
-
-
 
 
     /**
