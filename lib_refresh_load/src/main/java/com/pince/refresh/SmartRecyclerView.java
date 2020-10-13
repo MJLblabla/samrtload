@@ -108,6 +108,7 @@ public class SmartRecyclerView extends FrameLayout {
 
     /**
      * 请求成功　smartRefreshHelper处理页数记录空视图的显示
+     * @param sureLoadMoreEnd  服务器给了结束判断
      */
     public void onFetchDataFinish(List data,  Boolean  goneIfNoData,boolean sureLoadMoreEnd){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData,sureLoadMoreEnd);
