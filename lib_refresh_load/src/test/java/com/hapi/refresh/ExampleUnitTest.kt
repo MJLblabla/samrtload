@@ -1,4 +1,4 @@
-package com.pince.refresh
+package com.hapi.refresh
 
 import org.junit.Test
 

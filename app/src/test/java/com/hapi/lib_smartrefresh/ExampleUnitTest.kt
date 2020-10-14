@@ -1,4 +1,4 @@
-package com.pince.lib_smartrefresh
+package com.hapi.lib_smartrefresh
 
 import org.junit.Test
 

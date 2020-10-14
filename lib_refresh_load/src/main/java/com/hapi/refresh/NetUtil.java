@@ -1,17 +1,14 @@
-package com.pince.refresh;
+package com.hapi.refresh;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 
 /**
  *
- * @author athoucai
+ * @author blabla
  * @date 2016/10/13
  */
 public class NetUtil {

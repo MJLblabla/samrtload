@@ -1,4 +1,4 @@
-package com.pince.refresh
+package com.hapi.lib_smartrefresh
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.pince.refresh.test", appContext.packageName)
+        assertEquals("com.pince.lib_smartrefresh", appContext.packageName)
     }
 }

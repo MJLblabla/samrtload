@@ -1,4 +1,4 @@
-package com.pince.refresh;
+package com.hapi.refresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -40,7 +40,7 @@ public class SmartRecyclerView extends FrameLayout {
     private RecyclerView recyclerView;
 
     private SmartRefreshLayout smartRefreshLayout;
-    private  FrameLayout flRecyContent;
+    private FrameLayout flRecyContent;
 
 
 
@@ -102,17 +102,20 @@ public class SmartRecyclerView extends FrameLayout {
      *
      * @param goneIfNoData  已经到底了一直显示
      */
-    public void onFetchDataFinish(List data,  Boolean  goneIfNoData){
+    public void onFetchDataFinish(List data, Boolean goneIfNoData){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData);
     }
 
     /**
      * 请求成功　smartRefreshHelper处理页数记录空视图的显示
-     * @param sureLoadMoreEnd  服务器给了结束判断
+     *
+     * @param sureLoadMoreEnd  很明确没有下一页了　不需要请求下一页来确认
      */
-    public void onFetchDataFinish(List data,  Boolean  goneIfNoData,boolean sureLoadMoreEnd){
+    public void onFetchDataFinish(List data, Boolean goneIfNoData, boolean sureLoadMoreEnd){
         smartRefreshHelper.onFetchDataFinish(data ,goneIfNoData,sureLoadMoreEnd);
     }
+
+
 
 
     /**
@@ -124,7 +127,7 @@ public class SmartRecyclerView extends FrameLayout {
      * @param fetcherFuc 刷新事件页回调　0开始
      */
     public void setUp (BaseQuickAdapter adapter, IEmptyView emptyView
-            , int preLoadNumber,Boolean loadmoreNeed, Boolean refreshNeed
+            , int preLoadNumber, Boolean loadmoreNeed, Boolean refreshNeed
 
            , Function1<Integer,Unit>  fetcherFuc
     ){

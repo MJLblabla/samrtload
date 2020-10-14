@@ -1,9 +1,9 @@
-package com.pince.refresh
+package com.hapi.refresh
 
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView
-import com.pince.refresh.IEmptyView.*
+import com.hapi.refresh.IEmptyView.*
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 
@@ -49,7 +49,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
         refresh_layout.setEnableLoadMore(false)
         if(refreshNeed){
             refresh_layout.setOnRefreshListener {
-                refresh()
+                fetcherFuc(0)
             }
         }
     }
@@ -63,7 +63,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
     }
 
 
-    fun onFetchDataFinish(data: List<T>?, goneIfNoData: Boolean,sureLoadMoretEnd: Boolean?=null) {
+    fun onFetchDataFinish(data: List<T>?, goneIfNoData: Boolean,sureLoadMoreEnd: Boolean?) {
 
         refresh_layout.finishRefresh(true)
         if (data != null) {
@@ -80,8 +80,8 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
 
             }
 
-            if(sureLoadMoretEnd!=null){
-                if(sureLoadMoretEnd){
+            if(sureLoadMoreEnd!=null){
+                if(sureLoadMoreEnd){
                     adapter.loadMoreEnd(goneIfNoData)
                 }else{
                     adapter.loadMoreComplete()
@@ -93,6 +93,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
                     adapter.loadMoreComplete()
                 }
             }
+
         }
         refreshEmptyView(NODATA)
         isLoadMoreing = false
@@ -155,6 +156,6 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
         }
         isRefreshing = true
         currentPage = 0
-        fetcherFuc(0)
+        refresh_layout.autoRefresh()
     }
 }
