@@ -17,8 +17,14 @@ public interface IEmptyView {
      */
     int NODATA = 2;
 
+
+    int START_REFREASH=-1;
+    int END_REFREASH=0;
+
     View getContentView();
 
 
-    void setErrorType(int type);
+    void setStatus(int type);
+
+
 }
