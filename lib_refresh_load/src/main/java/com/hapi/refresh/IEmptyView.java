@@ -18,8 +18,8 @@ public interface IEmptyView {
     int NODATA = 2;
 
 
-    int START_REFREASH=-1;
-    int END_REFREASH=0;
+    int START_REFREASH_WHEN_EMPTY=-1; //数据为空时候刷新
+
 
     View getContentView();
 

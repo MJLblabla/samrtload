@@ -49,7 +49,10 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
         refresh_layout.setEnableLoadMore(false)
         if(refreshNeed){
             refresh_layout.setOnRefreshListener {
-                emptyCustomView?.setStatus(START_REFREASH)
+                if(adapter.data.isEmpty()){
+                    emptyCustomView?.setStatus(START_REFREASH_WHEN_EMPTY)
+                }
+
                 fetcherFuc(0)
             }
         }
@@ -77,7 +80,6 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
                 adapter.addData(data)
 
             } else {
-                emptyCustomView?.setStatus(END_REFREASH)
                 adapter.setNewData(data)
 
             }
