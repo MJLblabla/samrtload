@@ -81,7 +81,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
 
             } else {
                 adapter.setNewData(data)
-
+                currentPage=0
             }
 
             if(sureLoadMoreEnd!=null){
