@@ -52,7 +52,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
                 if(adapter.data.isEmpty()){
                     emptyCustomView?.setStatus(START_REFREASH_WHEN_EMPTY)
                 }
-
+                isRefreshing = true
                 fetcherFuc(0)
             }
         }
@@ -158,8 +158,7 @@ open class SmartRefreshHelper<T>(val adapter: BaseQuickAdapter<T, *>,
             refresh_layout.finishRefresh(true)
             return
         }
-        isRefreshing = true
-        currentPage = 0
+
         refresh_layout.autoRefresh()
     }
 }
